@@ -1,7 +1,8 @@
 fun main() {
-    fun part1(input: List<String>): Int {
+    val elves = mutableListOf<Int>()
+
+    fun part1(input: List<String>) {
         var calories = 0
-        val elves = mutableListOf<Int>()
 
         input.forEach {
             if (it.isEmpty()) {
@@ -11,10 +12,15 @@ fun main() {
                 calories += it.toInt()
             }
         }
-
-        return elves.max()
     }
 
-    val input = readInput("Day01")
-    println(part1(input))
+    // load data into list
+    part1(readInput("Day01"))
+
+    // most calories carried by an elf
+    println(elves.max())
+
+    // total calories carried by top 3 elves
+    elves.sortDescending()
+    println(elves[0] + elves[1] + elves[2])
 }
